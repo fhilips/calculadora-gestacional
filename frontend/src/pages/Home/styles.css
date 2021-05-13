@@ -1,0 +1,53 @@
+
+body {
+  font-family: "Roboto";
+  margin: 0px;
+  background-color: rgb(236, 225, 225);
+}
+h1 {
+  margin: 0px;
+}
+.container {
+  width: 100%; 
+  height: 90vh;
+  border: 1px solid;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calculadora-card {
+  border: 0px solid #fff;
+  border-radius: 2rem;
+  padding: 3rem 4rem ;
+  background-color: rgb(253, 243, 243);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.input-container {
+  margin-top: 1rem;
+}
+
+.criterio-container {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select {
+  margin-right: 1rem;
+  width: 15rem;
+  color: #FFF;
+}
+
+.data-container {
+  margin-bottom: 1rem;
+  
+}
+
