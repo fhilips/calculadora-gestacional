@@ -10,8 +10,9 @@ public enum CalculoGestacional {
 	
 	DATA_PROVAVEL_DO_PARTO {
 		@Override
-		public Gestante getCalculoGestacional(CalculoGestacionalDTO calculoGestacional) {				
+		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional) {				
 			LocalDate dataProvavelParto = LocalDate.parse(calculoGestacional.getData(), formatter());
+	
 			LocalDate dataUltimaMentruacao = dataProvavelParto.minusMonths(9);			
 			long diff =	ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());		
 			String idadeGestacional = formatarIdadeGestacional(diff);
@@ -21,7 +22,7 @@ public enum CalculoGestacional {
 	},
 	DATA_ULTIMA_MENSTRUACAO {
 		@Override
-		public Gestante getCalculoGestacional(CalculoGestacionalDTO calculoGestacional) {
+		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
 			LocalDate dataUltimaMentruacao = LocalDate.parse(calculoGestacional.getData(), formatter());
 			LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);			
 			long diff =	ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());	
@@ -30,9 +31,9 @@ public enum CalculoGestacional {
 			return new Gestante(dataProvavelParto, dataUltimaMentruacao, idadeGestacional);
 		}
 	}, 
-	DATA_GESTACIONAL_EM {
+	DATA_EXAME_ANTERIOR {
 		@Override
-		public Gestante getCalculoGestacional(CalculoGestacionalDTO calculoGestacional) {
+		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
 			LocalDate dataGestacionalEM = LocalDate.parse(calculoGestacional.getData(), formatter());
 			LocalDate dataUltimaMentruacao = 
 					dataGestacionalEM.minusWeeks(calculoGestacional.getSemanas())
@@ -46,7 +47,7 @@ public enum CalculoGestacional {
 	},
 	DATA_GESTACIONAL_ATUAL {
 		@Override
-		public Gestante getCalculoGestacional(CalculoGestacionalDTO calculoGestacional ) {
+		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional ) {
 			LocalDate dataUltimaMentruacao = 
 					LocalDate.now().minusWeeks(calculoGestacional.getSemanas())
 								   .minusDays(calculoGestacional.getDias());			
@@ -58,8 +59,8 @@ public enum CalculoGestacional {
 		}
 	};	
 	
-	public abstract Gestante getCalculoGestacional(CalculoGestacionalDTO calculoGestacional);
-	
+	public abstract Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional);
+		
 	
 	public String formatarIdadeGestacional(long diff) {
 		String idadeGestacional = (diff / 7) + " semana(s) e " + (diff % 7) + " dia(s)";

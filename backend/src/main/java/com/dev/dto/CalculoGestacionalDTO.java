@@ -1,25 +1,30 @@
 package com.dev.dto;
 
+import javax.validation.constraints.Max;
+
+
 import com.dev.entities.CalculoGestacional;
 
 
 public class CalculoGestacionalDTO {
 
 	private String data;
+	@Max(value = 42)
 	private Integer semanas;
+	@Max(value = 6)
 	private Integer dias;
-	private CalculoGestacional tipoDoCalculo;
+	private CalculoGestacional criterioCalculo;
 	
 	public CalculoGestacionalDTO() {
 		
 	}		
 
-	public CalculoGestacionalDTO(String data, Integer semanas, Integer dias, CalculoGestacional tipoDoCalculo) {
+	public CalculoGestacionalDTO(String data, Integer semanas, Integer dias, CalculoGestacional criterioCalculo) {
 		super();
 		this.data = data;
 		this.semanas = semanas;
 		this.dias = dias;
-		this.tipoDoCalculo = tipoDoCalculo;
+		this.criterioCalculo = criterioCalculo;
 	}
 
 
@@ -47,12 +52,12 @@ public class CalculoGestacionalDTO {
 		this.data = data;
 	}
 
-	public CalculoGestacional getTipoDoCalculo() {
-		return tipoDoCalculo;
+	public CalculoGestacional getCriterioCalculo() {
+		return criterioCalculo;
 	}
 
-	public void setTipoDoCalculo(CalculoGestacional tipoDoCalculo) {
-		this.tipoDoCalculo = tipoDoCalculo;
+	public void setCriterioCalculo(CalculoGestacional criterioCalculo) {
+		this.criterioCalculo = criterioCalculo;
 	}
 	
 	

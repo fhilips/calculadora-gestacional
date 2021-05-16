@@ -1,16 +1,7 @@
 
-body {
-  font-family: "Roboto";
-  margin: 0px;
-  background-color: rgb(236, 225, 225);
-}
-h1 {
-  margin: 0px;
-}
 .container {
   width: 100%; 
-  height: 90vh;
-  border: 1px solid;
+  height: 100vh;  
   
   display: flex;
   align-items: center;
@@ -20,34 +11,50 @@ h1 {
 
 .calculadora-card {
   border: 0px solid #fff;
+  width: 70%;
   border-radius: 2rem;
   padding: 3rem 4rem ;
-  background-color: rgb(253, 243, 243);
+  background-color: rgba(251, 251, 251, 0.876);
 
   display: flex;
-  align-items: center;
+  align-items: center;  
   flex-direction: column;
-
 }
 
 .input-container {
   margin-top: 1rem;
-}
-
-.criterio-container {
-  margin-bottom: 1rem;
   display: flex;
-  justify-content: space-between;
+  align-items: top;
+  justify-content:space-evenly;
+  flex-wrap: wrap; 
+  gap: 1.5rem
 }
 
-.select {
-  margin-right: 1rem;
-  width: 15rem;
-  color: #FFF;
+.input-item {
+  margin-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-basis: 30%;
+  flex-grow: 1;
+}
+
+.line-input-sepator {
+  border-top: 1px solid;
+  width: 100%;
 }
 
 .data-container {
-  margin-bottom: 1rem;
-  
+  margin-bottom: 1rem;  
+}
+
+.table-info {
+  max-width: 32rem;  
+  display: flex;
+  justify-content: center;
+}
+
+.not-display {
+  visibility: hidden;
 }
 
