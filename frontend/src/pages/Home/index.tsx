@@ -40,7 +40,7 @@ const Home = () => {
       .then((response) => {        
         setResponseData(response.data);
       })
-      .catch((message) => {console.log(message)});    
+      .catch((err) => {console.log(err.response.status)});    
   };
 
   return (

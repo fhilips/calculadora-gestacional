@@ -17,8 +17,7 @@ public enum ValidacaoCalculoGestacional {
 			
 				if (isBeforeToday(dataProvavelParto)) {
 					throw new ValidationException("Data não pode ser anterior a data atual!");
-				}
-				
+				}				
 				if (isMoreThan9monthsAfterToday(dataProvavelParto)) {
 					throw new ValidationException("Data não pode ser mais longe do que 9 meses!");
 				}

@@ -14,8 +14,8 @@ public enum CalculoGestacional {
 			LocalDate dataProvavelParto = LocalDate.parse(calculoGestacional.getData(), formatter());
 	
 			LocalDate dataUltimaMentruacao = dataProvavelParto.minusMonths(9);			
-			long diff =	ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());		
-			String idadeGestacional = formatarIdadeGestacional(diff);
+			long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);	;		
+			String idadeGestacional = formatarIdadeGestacional(diffEmDias);
 			
 			return new Gestante(dataProvavelParto, dataUltimaMentruacao, idadeGestacional);
 		}
@@ -24,23 +24,25 @@ public enum CalculoGestacional {
 		@Override
 		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
 			LocalDate dataUltimaMentruacao = LocalDate.parse(calculoGestacional.getData(), formatter());
-			LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);			
-			long diff =	ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());	
-			String idadeGestacional = formatarIdadeGestacional(diff);	
+			
+			LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);
+			long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);				
+			String idadeGestacional = formatarIdadeGestacional(diffEmDias);	
 			
 			return new Gestante(dataProvavelParto, dataUltimaMentruacao, idadeGestacional);
-		}
+		}		
 	}, 
 	DATA_EXAME_ANTERIOR {
 		@Override
 		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
 			LocalDate dataGestacionalEM = LocalDate.parse(calculoGestacional.getData(), formatter());
+			
 			LocalDate dataUltimaMentruacao = 
 					dataGestacionalEM.minusWeeks(calculoGestacional.getSemanas())
 								   .minusDays(calculoGestacional.getDias());
 			LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);			
-			long diff =	Math.abs(ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now()));	
-			String idadeGestacional = formatarIdadeGestacional(diff);
+			long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);		
+			String idadeGestacional = formatarIdadeGestacional(diffEmDias);
 			
 			return new Gestante(dataProvavelParto, dataUltimaMentruacao, idadeGestacional);
 		}
@@ -50,10 +52,11 @@ public enum CalculoGestacional {
 		public Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional ) {
 			LocalDate dataUltimaMentruacao = 
 					LocalDate.now().minusWeeks(calculoGestacional.getSemanas())
-								   .minusDays(calculoGestacional.getDias());			
+								   .minusDays(calculoGestacional.getDias());	
+			
 			LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);			
-			long diff =	ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());	
-			String idadeGestacional = (diff / 7) + " semana(s) e " + (diff % 7) + " dia(s)";	
+			long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);
+			String idadeGestacional = formatarIdadeGestacional(diffEmDias);				
 			
 			return new Gestante(dataProvavelParto, dataUltimaMentruacao, idadeGestacional);
 		}
@@ -61,15 +64,18 @@ public enum CalculoGestacional {
 	
 	public abstract Gestante calculoGestacional(CalculoGestacionalDTO calculoGestacional);
 		
-	
 	public String formatarIdadeGestacional(long diff) {
 		String idadeGestacional = (diff / 7) + " semana(s) e " + (diff % 7) + " dia(s)";
 		return idadeGestacional;
 	}
 
-
 	public DateTimeFormatter formatter() {
 		return DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	}
+	
+	long diasDesdeUltimaMenstruacao(LocalDate dataUltimaMentruacao) {
+		long diffEmDias = ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());
+		return diffEmDias;
 	}
 
 }
