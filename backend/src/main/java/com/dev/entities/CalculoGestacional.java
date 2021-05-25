@@ -8,9 +8,9 @@ import com.dev.dto.CalculoGestacionalDTO;
 import com.dev.dto.GestanteDTO;
 
 public abstract class CalculoGestacional {
-	public abstract GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional);
-		
 	
+	public abstract GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional);
+			
 	public String formatarIdadeGestacional(long diff) {
 		String idadeGestacional = (diff / 7) + " semana(s) e " + (diff % 7) + " dia(s)";
 		return idadeGestacional;

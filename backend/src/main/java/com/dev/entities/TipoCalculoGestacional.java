@@ -10,8 +10,7 @@ public enum TipoCalculoGestacional {
 		public GestanteDTO getCalculoGestacional(CalculoGestacionalDTO calculoGestacional) {				
 			
 			return new CalculoPorDataProvavelDoParto().calculoGestacional(calculoGestacional);			
-		}
-		
+		}		
 	},
 	DATA_ULTIMA_MENSTRUACAO {
 		@Override

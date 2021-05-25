@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "react-bootstrap";
 import axios from "axios";
+import InfoTable from "../../components/DataTable";
+import MainCard from "../../components/Card";
 import dataFormatada from "../../utils/format";
 import { BASE_URL } from "../../utils/request";
-import InfoTable from "../../components/DataTable";
-import { Button } from "react-bootstrap";
 import "./styles.css";
-import MainCard from "../../components/Card";
 
 type ResponseData = {
   dataProvavelDoParto: string;
@@ -51,13 +51,13 @@ const Home = () => {
         setResponseData(response.data);
       })
       .catch((err) => {
-        console.log(err.response.status);
+        console.log(err.data);
       });
   };
 
   return (
     <>
-    <div className="container">
+    <div className="home-container">
        <MainCard title={"Calculadora Gestacional"}>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -110,11 +110,14 @@ const Home = () => {
                     {...register("semanas", {
                       required: "Campo obrigatório",
                       max: 40,
+                      min: 0,
                     })}
                     placeholder="Semanas"
                   />
                   {errors.semanas?.type === "max" &&
                     "Semanas não pode ser maior do que 40!"}
+                  {errors.semanas?.type === "min" &&
+                  "Semanas não pode ser negativo!"}
                 </div>
                 <div className="input-item">
                   <label>Dias</label>
@@ -124,11 +127,14 @@ const Home = () => {
                     {...register("dias", {
                       required: "Campo obrigatório",
                       max: 6,
+                      min: 0
                     })}
                     placeholder="Dias"
                   />
                   {errors.dias?.type === "max" &&
                     "Dias não pode ser maior do que 6!"}
+                  {errors.dias?.type === "min" &&
+                  "Dias não pode ser negativo!"}
                 </div>
               </>
             )}
