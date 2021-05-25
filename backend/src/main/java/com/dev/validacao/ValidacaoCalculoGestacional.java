@@ -1,4 +1,4 @@
-package com.dev.entities;
+package com.dev.validacao;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -94,11 +94,11 @@ public enum ValidacaoCalculoGestacional {
 	}
 	
 	public boolean isDaysMoreThan6(Integer dias) {
-		return dias > 7;
+		return dias > 6;
 	}
 	
 	public boolean isWeeksMoreThan40(Integer semanas) {		
-		return semanas > 40;
+		return semanas > 39;
 	}
 	
 }

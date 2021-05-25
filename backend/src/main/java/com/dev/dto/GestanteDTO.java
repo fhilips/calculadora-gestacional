@@ -1,51 +1,66 @@
 package com.dev.dto;
 
-import java.time.LocalDateTime;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 public class GestanteDTO {
-	private LocalDateTime dataProvavelDoParto;
-	private LocalDateTime dataUltimaMenstruacao;
-	private LocalDateTime idadeGestacional;
-	private LocalDateTime idadeGestacionalEm;
-		
+	private LocalDate dataProvavelDoParto;
+	private LocalDate dataUltimaMenstruacao;	
+	private String idadeGestacional;
+	private String dataMorfoPrimeiroTri;
+	private String dataMorfoSegundoTri;
+	
 	public GestanteDTO() {	
 		
-	}
+	}	
 	
-	public GestanteDTO(LocalDateTime dataProvavelDoParto, LocalDateTime dataUltimaMenstruacao, LocalDateTime idadeGestacional,
-			LocalDateTime idadeGestacionalEm) {
+	public GestanteDTO(LocalDate dataProvavelDoParto, LocalDate dataUltimaMenstruacao, String idadeGestacional,
+			String dataMorfoPrimeiroTri, String dataMorfoSegundoTri) {
 		super();
 		this.dataProvavelDoParto = dataProvavelDoParto;
 		this.dataUltimaMenstruacao = dataUltimaMenstruacao;
 		this.idadeGestacional = idadeGestacional;
-		this.idadeGestacionalEm = idadeGestacionalEm;
-		
+		this.dataMorfoPrimeiroTri = dataMorfoPrimeiroTri;
+		this.dataMorfoSegundoTri = dataMorfoSegundoTri;
 	}
-	public LocalDateTime getDataProvavelDoParto() {
+
+	public LocalDate getDataProvavelDoParto() {
 		return dataProvavelDoParto;
 	}
-	public void setDataProvavelDoParto(LocalDateTime dataProvavelDoParto) {
+	
+	public void setDataProvavelDoParto(LocalDate dataProvavelDoParto) {
 		this.dataProvavelDoParto = dataProvavelDoParto;
 	}
-	public LocalDateTime getDataUltimaMenstruacao() {
+	
+	public LocalDate getDataUltimaMenstruacao() {
 		return dataUltimaMenstruacao;
 	}
-	public void setDataUltimaMenstruacao(LocalDateTime dataUltimaMenstruacao) {
+	public void setDataUltimaMenstruacao(LocalDate dataUltimaMenstruacao) {
 		this.dataUltimaMenstruacao = dataUltimaMenstruacao;
 	}
-	public LocalDateTime getIdadeGestacional() {
+
+	public String getIdadeGestacional() {
 		return idadeGestacional;
 	}
-	public void setIdadeGestacional(LocalDateTime idadeGestacional) {
+
+	public void setIdadeGestacional(String idadeGestacional) {
 		this.idadeGestacional = idadeGestacional;
 	}
-	public LocalDateTime getIdadeGestacionalEm() {
-		return idadeGestacionalEm;
+
+	public String getDataMorfoPrimeiroTri() {
+		return dataMorfoPrimeiroTri;
 	}
-	public void setIdadeGestacionalEm(LocalDateTime idadeGestacionalEm) {
-		this.idadeGestacionalEm = idadeGestacionalEm;
+
+	public void setDataMorfoPrimeiroTri(String dataMorfoPrimeiroTri) {
+		this.dataMorfoPrimeiroTri = dataMorfoPrimeiroTri;
 	}
-	
+
+	public String getDataMorfoSegundoTri() {
+		return dataMorfoSegundoTri;
+	}
+
+	public void setDataMorfoSegundoTri(String dataMorfoSegundoTri) {
+		this.dataMorfoSegundoTri = dataMorfoSegundoTri;
+	}	
 	
 }

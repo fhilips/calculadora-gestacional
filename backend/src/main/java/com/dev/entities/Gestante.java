@@ -7,23 +7,21 @@ public class Gestante {
 
 	private LocalDate dataProvavelDoParto;
 	private LocalDate dataUltimaMenstruacao;	
-	private String idadeGestacional;
-	
-	
-	public Gestante(LocalDate dataGes) {
-		this.dataProvavelDoParto = dataGes;
-	}
 	
 	public Gestante() {		
 	}
 	
-	public Gestante(LocalDate dataProvavelDoParto, LocalDate dataUltimaMenstruacao, String idadeGestacional) {
+	public Gestante(LocalDate dataGes) {
+		this.dataProvavelDoParto = dataGes;
+	}		
+	
+	public Gestante(LocalDate dataProvavelDoParto, LocalDate dataUltimaMenstruacao) {
 		super();
 		this.dataProvavelDoParto = dataProvavelDoParto;
-		this.dataUltimaMenstruacao = dataUltimaMenstruacao;
-		this.idadeGestacional = idadeGestacional;
+		this.dataUltimaMenstruacao = dataUltimaMenstruacao;	
 		
 	}
+	
 	public LocalDate getDataProvavelDoParto() {
 		return dataProvavelDoParto;
 	}
@@ -32,9 +30,4 @@ public class Gestante {
 		return dataUltimaMenstruacao;
 	}
 
-	public String getIdadeGestacional() {
-		return idadeGestacional;
-	}
-
-		
 }

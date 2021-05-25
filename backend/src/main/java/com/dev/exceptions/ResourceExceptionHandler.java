@@ -24,8 +24,7 @@ public class ResourceExceptionHandler {
 		err.setError("Validation exception");
 		err.setMessage(e.getMessage());
 		err.setPath(request.getRequestURI()); 
-		System.out.println("Validation exception");
-		
+		System.out.println("Validation exception");		
 		
 		return ResponseEntity.status(status).body(err);
 	}

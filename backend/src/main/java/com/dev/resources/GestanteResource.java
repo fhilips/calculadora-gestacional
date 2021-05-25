@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.dev.dto.CalculoGestacionalDTO;
+import com.dev.dto.GestanteDTO;
 import com.dev.entities.Gestante;
 import com.dev.service.GestanteService;
 
@@ -22,8 +23,8 @@ public class GestanteResource {
 	private GestanteService service;
 
 	@PostMapping
-	public ResponseEntity<Gestante> calcular(@RequestBody CalculoGestacionalDTO calculoGestacional){
-		Gestante gestante = service.calcular(calculoGestacional);
+	public ResponseEntity<GestanteDTO> calcular(@RequestBody CalculoGestacionalDTO calculoGestacional){
+		GestanteDTO gestante = service.calcular(calculoGestacional);
 	
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest().buildAndExpand(gestante).toUri();

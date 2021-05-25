@@ -5,12 +5,14 @@ type ResponseData = {
   dataProvavelDoParto: string;
   dataUltimaMenstruacao: string;
   idadeGestacional: string;
+  dataMorfoPrimeiroTri: string;
+  dataMorfoSegundoTri: string;
 };
 type Props = {
   responseData: ResponseData;
 };
 
-const InfoTable = ({ responseData }: Props) => {
+const DataTable = ({ responseData }: Props) => {
   return (
     <>
       <h4 className="mt-4 mb-4">Informações da gestante</h4>
@@ -28,10 +30,18 @@ const InfoTable = ({ responseData }: Props) => {
             <td>Idade gestacional:</td>
             <td>{responseData.idadeGestacional}</td>
           </tr>
+          <tr>
+            <td>Data Morfologico 1 trimestre:</td>
+            <td>{responseData.dataMorfoPrimeiroTri}</td>
+          </tr>
+          <tr>
+            <td>Data Morfologico 2 trimestre:</td>
+            <td>{responseData.dataMorfoSegundoTri}</td>
+          </tr>
         </tbody>
       </Table>
     </>
   );
 };
 
-export default InfoTable;
+export default DataTable;
