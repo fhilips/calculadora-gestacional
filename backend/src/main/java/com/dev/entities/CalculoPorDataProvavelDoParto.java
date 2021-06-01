@@ -11,7 +11,10 @@ public class CalculoPorDataProvavelDoParto extends CalculoGestacional {
 	public GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
 		LocalDate dataProvavelParto = LocalDate.parse(calculoGestacional.getData(), formatter());
 		
-		LocalDate dataUltimaMentruacao = dataProvavelParto.minusMonths(9);			
+		LocalDate dataUltimaMentruacao = dataProvavelParto.minusMonths(9);
+		
+		dataUltimaMentruacao.format(formatter());
+		dataProvavelParto.format(formatter());
 		long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);			
 		String idadeGestacional = formatarIdadeGestacional(diffEmDias);
 		String dataMorfoPrimeiroTri = calcularDataMorfoPrimeiroTri(dataUltimaMentruacao);

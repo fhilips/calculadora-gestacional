@@ -56,7 +56,7 @@ public enum ValidacaoCalculoGestacional {
 		}		
 
 	},
-	DATA_GESTACIONAL_ATUAL {
+	IDADE_GESTACIONAL_ATUAL {
 		@Override
 		public Boolean validarCalculoGestacional(CalculoGestacionalDTO calculoGestacional ) {
 			

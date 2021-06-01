@@ -26,11 +26,11 @@ public enum TipoCalculoGestacional {
 			return new CalculoPorDataExameAnterior().calculoGestacional(calculoGestacional);
 		}
 	},
-	DATA_GESTACIONAL_ATUAL {
+	IDADE_GESTACIONAL_ATUAL {
 		@Override
 		public GestanteDTO getCalculoGestacional(CalculoGestacionalDTO calculoGestacional ) {
 			
-			return new CalculoPorDataGestacionalAtual().calculoGestacional(calculoGestacional);
+			return new CalculoPorIdadeGestacionalAtual().calculoGestacional(calculoGestacional);
 		}
 	};	
 	
