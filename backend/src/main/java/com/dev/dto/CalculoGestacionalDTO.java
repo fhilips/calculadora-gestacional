@@ -1,6 +1,5 @@
 package com.dev.dto;
 
-import com.dev.entities.CalculoGestacional;
 import com.dev.entities.TipoCalculoGestacional;
 
 public class CalculoGestacionalDTO {

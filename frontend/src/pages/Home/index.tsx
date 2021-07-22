@@ -64,7 +64,7 @@ const Home = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-container mb-2">
               <div className="input-item">
-                <label>Critério</label>                
+                <label>Critério:</label>                
                 <select
                   className="form-control"
                   defaultValue={""}
@@ -93,7 +93,7 @@ const Home = () => {
                     : ""
                 }`}
               >
-                <label>Data</label>
+                <label>Data:</label>
                 <input
                   className="form-control"
                   type="date"
