@@ -12,8 +12,8 @@ public class GestanteService {
 	public GestanteDTO calcular(CalculoGestacionalDTO calculoGestacional)  {		
 		String criterio = calculoGestacional.getCriterioCalculo().toString();	
 		ValidacaoCalculoGestacional.valueOf(criterio).validarCalculoGestacional(calculoGestacional);
-
 		GestanteDTO gestante = calculoGestacional.getCriterioCalculo().getCalculoGestacional(calculoGestacional);
+		
 		return gestante;	
 	}
 	

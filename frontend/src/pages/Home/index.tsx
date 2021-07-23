@@ -78,7 +78,7 @@ const Home = () => {
                   <option value={"DATA_ULTIMA_MENSTRUACAO"}>
                     Data da última menstruação
                   </option>
-                  <option value={"DATA_GESTACIONAL_ATUAL"}>
+                  <option value={"IDADE_GESTACIONAL_ATUAL"}>
                     Idade gestacional atual
                   </option>
                   <option value={"DATA_EXAME_ANTERIOR"}>
@@ -88,7 +88,7 @@ const Home = () => {
               </div>
               <div
                 className={`input-item ${
-                  watchCriterioCalculo === "DATA_GESTACIONAL_ATUAL"
+                  watchCriterioCalculo === "IDADE_GESTACIONAL_ATUAL"
                     ? "not-display"
                     : ""
                 }`}
@@ -102,7 +102,7 @@ const Home = () => {
                 />
               </div>
               <div className="line-input-sepator" />
-              {(watchCriterioCalculo === "DATA_GESTACIONAL_ATUAL" ||
+              {(watchCriterioCalculo === "IDADE_GESTACIONAL_ATUAL" ||
                 watchCriterioCalculo === "DATA_EXAME_ANTERIOR") && (
                 <>
                   <div className="input-item ">

@@ -10,10 +10,8 @@ const MainCard = ({ title, children } :Props) => {
     <div className="calculadora-card">
       <h1 className="auth-card-title">
         {title}
-      </h1>
-      
-        {children}
-      
+      </h1>      
+        {children}      
     </div>
   )
 }

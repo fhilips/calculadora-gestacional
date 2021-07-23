@@ -12,7 +12,21 @@ public abstract class CalculoGestacional {
 	public abstract GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional);
 			
 	public String formatarIdadeGestacional(long diff) {
-		String idadeGestacional = (diff / 7) + " semana(s) e " + (diff % 7) + " dia(s)";
+		String semana;
+		String dia;
+		if(diff / 7 == 1 || diff / 7 == 0) {
+			semana = (diff / 7) + " semana e ";
+		} else {
+			semana = (diff / 7) + " semanas e ";
+		}
+		
+		if(diff % 7 == 1 || diff % 7 == 0) {
+			dia = (diff % 7) + " dia";
+		} else {
+			dia = (diff % 7) + " dias";
+		}
+			
+		String idadeGestacional = semana + dia;
 		return idadeGestacional;
 	}
 	
@@ -26,9 +40,22 @@ public abstract class CalculoGestacional {
 	}
 	
 	public String calcularDataMorfoPrimeiroTri(LocalDate dataUltimaMentruacao) {
-		LocalDate dataInicioPrimeiroTri = dataUltimaMentruacao.plusWeeks(10);
-		LocalDate dataFimPrimeiroTri = dataInicioPrimeiroTri.plusWeeks(4);
-		String dataFormatada = "De " + dataInicioPrimeiroTri.toString() + " até " + dataFimPrimeiroTri.toString();
+		LocalDate dataInicioPrimeiroTri = dataUltimaMentruacao.plusWeeks(10);			
+		LocalDate dataFimPrimeiroTri = dataInicioPrimeiroTri.plusWeeks(4);		
+		String dataFormatada = "De " + dataFormatada(dataInicioPrimeiroTri) + " até " + dataFormatada(dataFimPrimeiroTri);
+		
 		return dataFormatada;
+	}
+	
+	public String calcularDataMorfoSegundoTri(LocalDate dataUltimaMentruacao) {
+		LocalDate dataInicioSegundoTri = dataUltimaMentruacao.plusWeeks(20);
+		LocalDate dataFimSegundoTri = dataInicioSegundoTri.plusWeeks(4);
+		String dataFormatada = "De " + dataFormatada(dataInicioSegundoTri) + " até " + dataFormatada(dataFimSegundoTri);		
+		
+		return dataFormatada;
+	}
+	
+	public String dataFormatada(LocalDate data) {
+		return data.format(formatter());
 	}
 }

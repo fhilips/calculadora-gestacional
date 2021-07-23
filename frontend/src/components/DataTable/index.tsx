@@ -19,23 +19,23 @@ const DataTable = ({ responseData }: Props) => {
       <Table striped hover>        
         <tbody>
           <tr>
-            <td>Data Provavel do Parto:</td>
+            <td><strong>Data provável do parto:</strong></td>
             <td>{dataFormatada(responseData.dataProvavelDoParto)}</td>
           </tr>
           <tr>
-            <td>Data última menstruacao:</td>
+            <td><strong>Data da última menstruação:</strong></td>
             <td>{dataFormatada(responseData.dataUltimaMenstruacao)}</td>
           </tr>
           <tr>
-            <td>Idade gestacional:</td>
+            <td><strong>Idade gestacional:</strong></td>
             <td>{responseData.idadeGestacional}</td>
           </tr>
           <tr>
-            <td>Data Morfologico 1 trimestre:</td>
+            <td><strong>Data morfológico 1 trimestre:</strong></td>
             <td>{responseData.dataMorfoPrimeiroTri}</td>
           </tr>
           <tr>
-            <td>Data Morfologico 2 trimestre:</td>
+            <td><strong>Data morfológico 2 trimestre:</strong></td>
             <td>{responseData.dataMorfoSegundoTri}</td>
           </tr>
         </tbody>

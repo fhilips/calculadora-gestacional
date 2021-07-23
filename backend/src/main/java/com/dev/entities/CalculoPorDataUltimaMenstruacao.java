@@ -15,7 +15,9 @@ public class CalculoPorDataUltimaMenstruacao extends CalculoGestacional {
 		long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);				
 		String idadeGestacional = formatarIdadeGestacional(diffEmDias);	
 		String dataMorfoPrimeiroTri = calcularDataMorfoPrimeiroTri(dataUltimaMentruacao);
-		return new GestanteDTO(dataProvavelParto, dataUltimaMentruacao, idadeGestacional, dataMorfoPrimeiroTri, dataMorfoPrimeiroTri);	
+		String dataMorfoSegundoTri = calcularDataMorfoSegundoTri(dataUltimaMentruacao);
+		
+		return new GestanteDTO(dataProvavelParto, dataUltimaMentruacao, idadeGestacional, dataMorfoPrimeiroTri, dataMorfoSegundoTri);
 	}
 
 }
