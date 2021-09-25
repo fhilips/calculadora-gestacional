@@ -19,7 +19,7 @@ public enum ValidacaoCalculoGestacional {
 					throw new ValidationException("Data não pode ser anterior a data atual!");
 				}				
 				if (isMoreThan9monthsAfterToday(dataProvavelParto)) {
-					throw new ValidationException("Data não pode ser mais longe do que 9 meses!");
+					throw new ValidationException("Data não pode ser posterior a 9 meses da data atual!");
 				}
 				return true;	
 		}
@@ -33,7 +33,7 @@ public enum ValidacaoCalculoGestacional {
 				throw new ValidationException("Data deve ser anterior a data atual!");
 			}
 			if (isMoreThan9monthsBeforeToday(dataUltimaMentruacao)) {
-				throw new ValidationException("Data não pode ser mais antiga do que 9 meses!");
+				throw new ValidationException("Data não pode ser anterior a 9 meses!");
 			}						
 			return true;
 		}

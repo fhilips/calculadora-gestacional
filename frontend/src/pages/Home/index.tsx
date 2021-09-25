@@ -38,10 +38,9 @@ const Home = () => {
   });
   const watchCriterioCalculo = watch("criterioCalculo");
   const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
 
   const onSubmit = (data: FormData) => {
-    console.log(data?.data);
-    console.log(dataFormatada(data?.data));
     axios
       .post(`${BASE_URL}/`, {
         data: dataFormatada(data?.data),
@@ -53,7 +52,8 @@ const Home = () => {
         setResponseData(response.data);
         setHasError(false);
       })
-      .catch((err) => {
+      .catch((error) => {
+        setErrorMessage(error.response.data.message);
         setHasError(true);
       });
   };
@@ -143,7 +143,7 @@ const Home = () => {
                 )}
             </div>
             {hasError && (
-              <h5>Data gestacional inválida</h5>
+              <h5 className="error-message">{errorMessage}</h5>
             )}
             <Button className="mt2" type="submit" variant="secondary" block>
               CALCULAR

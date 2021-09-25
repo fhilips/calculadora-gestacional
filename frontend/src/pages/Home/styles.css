@@ -50,4 +50,8 @@
   visibility: hidden;
 }
 
+.error-message {
+  text-align: center;
+  color: rgb(247, 71, 71);
+}
 
