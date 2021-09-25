@@ -40,7 +40,8 @@ const Home = () => {
   const [hasError, setHasError] = useState(false);
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    console.log(data?.data);
+    console.log(dataFormatada(data?.data));
     axios
       .post(`${BASE_URL}/`, {
         data: dataFormatada(data?.data),
@@ -64,7 +65,7 @@ const Home = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-container mb-2">
               <div className="input-item">
-                <label>Critério:</label>                
+                <label>Critério:</label>
                 <select
                   className="form-control"
                   defaultValue={""}
@@ -87,11 +88,10 @@ const Home = () => {
                 </select>
               </div>
               <div
-                className={`input-item ${
-                  watchCriterioCalculo === "IDADE_GESTACIONAL_ATUAL"
-                    ? "not-display"
-                    : ""
-                }`}
+                className={`input-item ${watchCriterioCalculo === "IDADE_GESTACIONAL_ATUAL"
+                  ? "not-display"
+                  : ""
+                  }`}
               >
                 <label>Data:</label>
                 <input
@@ -104,46 +104,46 @@ const Home = () => {
               <div className="line-input-sepator" />
               {(watchCriterioCalculo === "IDADE_GESTACIONAL_ATUAL" ||
                 watchCriterioCalculo === "DATA_EXAME_ANTERIOR") && (
-                <>
-                  <div className="input-item ">
-                    <label>Semanas</label>
-                    <input
-                      className="form-control"
-                      type="number"
-                      {...register("semanas", {
-                        required: "Campo obrigatório",
-                        max: 40,
-                        min: 0,
-                      })}
-                      placeholder="Semanas"
-                    />
-                    {errors.semanas?.type === "max" &&
-                      "Semanas não pode ser maior do que 40!"}
-                    {errors.semanas?.type === "min" &&
-                      "Semanas não pode ser negativo!"}
-                  </div>
-                  <div className="input-item">
-                    <label>Dias</label>
-                    <input
-                      className="form-control"
-                      type="number"
-                      {...register("dias", {
-                        required: "Campo obrigatório",
-                        max: 6,
-                        min: 0,
-                      })}
-                      placeholder="Dias"
-                    />
-                    {errors.dias?.type === "max" &&
-                      "Dias não pode ser maior do que 6!"}
-                    {errors.dias?.type === "min" &&
-                      "Dias não pode ser negativo!"}
-                  </div>
-                </>
-              )}
+                  <>
+                    <div className="input-item ">
+                      <label>Semanas</label>
+                      <input
+                        className="form-control"
+                        type="number"
+                        {...register("semanas", {
+                          required: "Campo obrigatório",
+                          max: 40,
+                          min: 0,
+                        })}
+                        placeholder="Semanas"
+                      />
+                      {errors.semanas?.type === "max" &&
+                        "Semanas não pode ser maior do que 40!"}
+                      {errors.semanas?.type === "min" &&
+                        "Semanas não pode ser negativo!"}
+                    </div>
+                    <div className="input-item">
+                      <label>Dias</label>
+                      <input
+                        className="form-control"
+                        type="number"
+                        {...register("dias", {
+                          required: "Campo obrigatório",
+                          max: 6,
+                          min: 0,
+                        })}
+                        placeholder="Dias"
+                      />
+                      {errors.dias?.type === "max" &&
+                        "Dias não pode ser maior do que 6!"}
+                      {errors.dias?.type === "min" &&
+                        "Dias não pode ser negativo!"}
+                    </div>
+                  </>
+                )}
             </div>
             {hasError && (
-                  <h5>Data gestacional inválida</h5>
+              <h5>Data gestacional inválida</h5>
             )}
             <Button className="mt2" type="submit" variant="secondary" block>
               CALCULAR
