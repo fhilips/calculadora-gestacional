@@ -12,7 +12,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.dev.dto.CalculoGestacionalDTO;
 import com.dev.dto.GestanteDTO;
-import com.dev.entities.Gestante;
 import com.dev.service.GestanteService;
 
 @RestController

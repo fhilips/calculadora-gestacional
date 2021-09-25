@@ -1,7 +1,6 @@
 package com.dev.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 public class Gestante {
 

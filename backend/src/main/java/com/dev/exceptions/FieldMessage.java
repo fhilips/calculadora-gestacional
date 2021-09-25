@@ -1,7 +1,6 @@
 package com.dev.exceptions;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 public class FieldMessage implements Serializable {
 
