@@ -13,8 +13,8 @@ public class CalculoPorIdadeGestacionalAtual extends CalculoGestacional {
 				LocalDate.now().minusWeeks(calculoGestacional.getSemanas())
 							   .minusDays(calculoGestacional.getDias());			
 		dataUltimaMentruacao.format(formatter());	
-		System.out.println(dataUltimaMentruacao);
-		LocalDate dataProvavelParto = dataUltimaMentruacao.plusMonths(9);
+		
+		LocalDate dataProvavelParto = dataUltimaMentruacao.plusDays(280);
 		dataProvavelParto.format(formatter());
 		long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);
 		String idadeGestacional = formatarIdadeGestacional(diffEmDias);				
