@@ -25,30 +25,26 @@ public class DataValues {
 	public String dataAnteriorA9Meses;
 	public String dataPosteriorA9Meses;
 	public String dataAtualMenosUmDia;
-	public String dataAtualMaisUmDia;
-	public CalculoGestacionalDTO calculoDto;	
+	public String dataAtualMaisUmDia;	
 	
 	public DataValues() {		
 		dias = 5;
 		numeroDeDiasNegativos = -7;
 		numeroDediasMaiorQue7 = 10;
 		semanas = 15;
-		numeroDeSemanasNegativas = -19;
-		
+		numeroDeSemanasNegativas = -19;		
 		numeroDeSemanasMaiorQue40 = 50;
 		
 		dataAtual = formatarDataParaString(LocalDate.now());
 		dataAtualMenosUmDia = formatarDataParaString(LocalDate.now().minusDays(1));
 		dataAtualMaisUmDia = formatarDataParaString(LocalDate.now().plusDays(1));
-		dataAnteriorA9Meses = formatarDataParaString(LocalDate.now().minusMonths(9).minusDays(5));		
+		dataAnteriorA9Meses = formatarDataParaString(LocalDate.now().minusDays(281));		
 		dataPosteriorA9Meses = formatarDataParaString(LocalDate.now().plusWeeks(40).plusDays(1));
 		
 		dataProvavelDoParto = TipoCalculoGestacional.DATA_PROVAVEL_DO_PARTO;
 		dataUltimaMenstruacao = TipoCalculoGestacional.DATA_ULTIMA_MENSTRUACAO;
 		dataExameAnterior = TipoCalculoGestacional.DATA_EXAME_ANTERIOR;
-		dataGestacionalAtual = TipoCalculoGestacional.IDADE_GESTACIONAL_ATUAL;
-
-		calculoDto = new CalculoGestacionalDTO( "15/10/2019", dias, semanas, dataProvavelDoParto);
+		dataGestacionalAtual = TipoCalculoGestacional.IDADE_GESTACIONAL_ATUAL;		
 	}
 
 

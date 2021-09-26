@@ -18,67 +18,72 @@ import com.dev.dto.GestanteDTO;
 import com.dev.service.GestanteService;
 import com.dev.tests.Factory.DataValues;
 
-
 @ExtendWith(SpringExtension.class)
 public class CalculoDataProvavelDoPartoTests {
-	
 
 	@InjectMocks
-	private GestanteService service;	
-	
+	private GestanteService service;
+
 	private DataValues dataValues;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		dataValues = new DataValues();
 	}
-	
+
 	@Test
-	public void whenTipoCalculoGestacionalIsDataProvavelDoPartoAndDataIsBeforeTodayCalcularShouldReturnValidationException() {
-				
-		Assertions.assertThrows(ValidationException.class, () -> {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null, dataValues.dataProvavelDoParto);
+	public void whenDataIsBeforeTodayCalcularShouldReturnValidationException() {
+
+		Assertions.assertThrows(ValidationException.class, () -> {
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null,
+					dataValues.dataProvavelDoParto);
 			service.calcular(calculoDTO);
 		});
 	}
+
 	@Test
-	public void whenTipoCalculoGestacionalIsDataProvavelDoPartoAndDataIsBeforeTodayCalcularShouldReturnTheCorrectMessage() {
-				
-		try {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null, dataValues.dataProvavelDoParto);
+	public void whenDataIsBeforeTodayCalcularShouldReturnTheCorrectErrorMessage() {
+
+		try {
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null,
+					dataValues.dataProvavelDoParto);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser anterior a data atual!");
 		}
 	}
-	
-	
+
 	@Test
-	public void whenTipoCalculoGestacionalIsDataProvavelDoPartoAndDataIsMoreThan9MonthsAfterTodayCalcularShouldReturnValidationException() {
-				
+	public void whenDataIsMoreThan9MonthsAfterTodayCalcularShouldReturnValidationException() {
+
 		Assertions.assertThrows(ValidationException.class, () -> {
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null, dataValues.dataProvavelDoParto);
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null,
+					dataValues.dataProvavelDoParto);
 			service.calcular(calculoDTO);
-		});		
-	
+		});
+
 	}
+
 	@Test
-	public void whenTipoCalculoGestacionalIsDataProvavelDoPartoAndDataIsMoreThan9MonthsAfterTodayCalcularShouldReturnTheCorrectErrorMessage() {
-						
-		try {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null, dataValues.dataProvavelDoParto);
+	public void whenDataIsMoreThan9MonthsAfterTodayCalcularShouldReturnTheCorrectErrorMessage() {
+
+		try {
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null,
+					dataValues.dataProvavelDoParto);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser posterior a 9 meses da data atual!");
 		}
 	}
-	
+
 	@Test
-	public void whenTipoCalculoGestacionalIsDataProvavelDoPartoAndDataIsValidCalcularShouldReturnIdadeGestacional() {
-		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.dataProvavelDoParto);				
+	public void whenDataIsValidCalcularShouldReturnIdadeGestacional() {
+		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null,
+				dataValues.dataProvavelDoParto);
 		GestanteDTO dadosGestacionais = service.calcular(calculoDTO);
-		
-		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(279)), dadosGestacionais.getIdadeGestacional());
-	}	
-	
+
+		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(279)),
+				dadosGestacionais.getIdadeGestacional());
+	}
+
 }
