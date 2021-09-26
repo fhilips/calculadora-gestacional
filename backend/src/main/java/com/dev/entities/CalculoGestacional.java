@@ -11,7 +11,8 @@ public abstract class CalculoGestacional {
 	
 	public abstract GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional);
 			
-	public String formatarIdadeGestacional(long diff) {
+	public String formatarIdadeGestacional(LocalDate dataUltimaMentruacao) {
+		long diff = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);
 		String semana;
 		String dia;
 		if(diff / 7 == 1 || diff / 7 == 0) {
@@ -30,13 +31,13 @@ public abstract class CalculoGestacional {
 		return idadeGestacional;
 	}
 	
-	public DateTimeFormatter formatter() {
-		return DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	}
-	
 	public long diasDesdeUltimaMenstruacao(LocalDate dataUltimaMentruacao) {
 		long diffEmDias = ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());
 		return diffEmDias;
+	}
+	
+	public DateTimeFormatter formatter() {
+		return DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	}
 	
 	public String calcularDataMorfoPrimeiroTri(LocalDate dataUltimaMentruacao) {

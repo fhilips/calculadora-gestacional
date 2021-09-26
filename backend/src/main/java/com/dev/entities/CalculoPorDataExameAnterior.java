@@ -16,8 +16,7 @@ public class CalculoPorDataExameAnterior extends CalculoGestacional {
 							   .minusDays(calculoGestacional.getDias());
 		
 		LocalDate dataProvavelParto = dataUltimaMentruacao.plusDays(280);			
-		long diffEmDias = diasDesdeUltimaMenstruacao(dataUltimaMentruacao);		
-		String idadeGestacional = formatarIdadeGestacional(diffEmDias);
+		String idadeGestacional = formatarIdadeGestacional(dataUltimaMentruacao);
 		String dataMorfoPrimeiroTri = calcularDataMorfoPrimeiroTri(dataUltimaMentruacao);
 		String dataMorfoSegundoTri = calcularDataMorfoSegundoTri(dataUltimaMentruacao);
 		
