@@ -1,6 +1,6 @@
 package com.dev.web.dto.request;
 
-import com.dev.domain.models.TipoCalculoGestacional;
+import com.dev.services.calculos.TipoCalculoGestacional;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

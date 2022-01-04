@@ -1,4 +1,4 @@
-package com.dev.domain.models;
+package com.dev.services.calculos;
 
 import com.dev.web.dto.request.CalculoGestacionalDTO;
 import com.dev.web.dto.request.GestanteDTO;
