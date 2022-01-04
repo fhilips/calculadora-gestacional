@@ -13,10 +13,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.dev.dto.CalculoGestacionalDTO;
-import com.dev.dto.GestanteDTO;
-import com.dev.service.GestanteService;
+import com.dev.services.GestanteService;
 import com.dev.tests.Factory.DataValues;
+import com.dev.web.dto.request.CalculoGestacionalDTO;
+import com.dev.web.dto.request.GestanteDTO;
 
 @ExtendWith(SpringExtension.class)
 public class CalculoDataProvavelDoPartoTests {

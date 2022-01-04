@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.validation.ValidationException;
 
-import com.dev.dto.CalculoGestacionalDTO;
+import com.dev.web.dto.request.CalculoGestacionalDTO;
 
 public enum ValidacaoCalculoGestacional {	
 	

@@ -1,6 +1,6 @@
 package com.dev.tests.Factory;
 
-import com.dev.dto.CalculoGestacionalDTO;
+import com.dev.web.dto.request.CalculoGestacionalDTO;
 
 public class CalculoGestacionalFactory {
 

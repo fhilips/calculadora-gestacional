@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-import com.dev.dto.CalculoGestacionalDTO;
-import com.dev.entities.TipoCalculoGestacional;
+import com.dev.domain.models.TipoCalculoGestacional;
 
 public class DataValues {
 	
