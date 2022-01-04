@@ -9,10 +9,10 @@ public class CalculoPorDataExameAnterior extends CalculoGestacional {
 
 	@Override
 	public GestanteDTO calculoGestacional(CalculoGestacionalDTO calculoGestacional) {
-		LocalDate dataGestacionalEM = LocalDate.parse(calculoGestacional.getData(), formatter());
+		LocalDate dataGestacionalEm = LocalDate.parse(calculoGestacional.getData(), formatter());
 		
 		LocalDate dataUltimaMentruacao = 
-				dataGestacionalEM.minusWeeks(calculoGestacional.getSemanas())
+				dataGestacionalEm.minusWeeks(calculoGestacional.getSemanas())
 							   .minusDays(calculoGestacional.getDias());
 		
 		LocalDate dataProvavelParto = dataUltimaMentruacao.plusDays(280);			

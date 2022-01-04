@@ -34,11 +34,7 @@ public abstract class CalculoGestacional {
 	public long diasDesdeUltimaMenstruacao(LocalDate dataUltimaMentruacao) {
 		long diffEmDias = ChronoUnit.DAYS.between(dataUltimaMentruacao, LocalDate.now());
 		return diffEmDias;
-	}
-	
-	public DateTimeFormatter formatter() {
-		return DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	}
+	}	
 	
 	public String calcularDataMorfoPrimeiroTri(LocalDate dataUltimaMentruacao) {
 		LocalDate dataInicioPrimeiroTri = dataUltimaMentruacao.plusWeeks(10);			
@@ -54,6 +50,10 @@ public abstract class CalculoGestacional {
 		String dataFormatada = "De " + dataFormatada(dataInicioSegundoTri) + " até " + dataFormatada(dataFimSegundoTri);		
 		
 		return dataFormatada;
+	}
+	
+	public DateTimeFormatter formatter() {
+		return DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	}
 	
 	public String dataFormatada(LocalDate data) {
