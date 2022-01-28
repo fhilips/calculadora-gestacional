@@ -8,10 +8,10 @@ import com.dev.services.calculos.TipoCalculoGestacional;
 
 public class DataValues {
 	
-	public TipoCalculoGestacional dataProvavelDoParto;
-	public TipoCalculoGestacional dataUltimaMenstruacao;
-	public TipoCalculoGestacional dataExameAnterior;
-	public TipoCalculoGestacional dataGestacionalAtual;
+	public TipoCalculoGestacional criterioDataProvavelDoParto;
+	public TipoCalculoGestacional criterioDataUltimaMenstruacao;
+	public TipoCalculoGestacional criterioDataExameAnterior;
+	public TipoCalculoGestacional criterioDataGestacionalAtual;
 	
 	public int dias;
 	public int numeroDeDiasNegativos;
@@ -40,10 +40,10 @@ public class DataValues {
 		dataAnteriorA9Meses = formatarDataParaString(LocalDate.now().minusDays(281));		
 		dataPosteriorA9Meses = formatarDataParaString(LocalDate.now().plusWeeks(40).plusDays(1));
 		
-		dataProvavelDoParto = TipoCalculoGestacional.DATA_PROVAVEL_DO_PARTO;
-		dataUltimaMenstruacao = TipoCalculoGestacional.DATA_ULTIMA_MENSTRUACAO;
-		dataExameAnterior = TipoCalculoGestacional.DATA_EXAME_ANTERIOR;
-		dataGestacionalAtual = TipoCalculoGestacional.IDADE_GESTACIONAL_ATUAL;		
+		criterioDataProvavelDoParto = TipoCalculoGestacional.DATA_PROVAVEL_DO_PARTO;
+		criterioDataUltimaMenstruacao = TipoCalculoGestacional.DATA_ULTIMA_MENSTRUACAO;
+		criterioDataExameAnterior = TipoCalculoGestacional.DATA_EXAME_ANTERIOR;
+		criterioDataGestacionalAtual = TipoCalculoGestacional.IDADE_GESTACIONAL_ATUAL;		
 	}
 
 

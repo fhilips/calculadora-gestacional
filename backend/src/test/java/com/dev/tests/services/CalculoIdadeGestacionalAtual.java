@@ -37,7 +37,7 @@ public class CalculoIdadeGestacionalAtual {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.numeroDediasMaiorQue7,
-					dataValues.dataGestacionalAtual);
+					dataValues.criterioDataGestacionalAtual);
 			service.calcular(calculoDTO);
 		});
 
@@ -48,7 +48,7 @@ public class CalculoIdadeGestacionalAtual {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.numeroDediasMaiorQue7,
-					dataValues.dataGestacionalAtual);
+					dataValues.criterioDataGestacionalAtual);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Número de dias devem ser menores do que 7!");
@@ -60,7 +60,7 @@ public class CalculoIdadeGestacionalAtual {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.numeroDeSemanasMaiorQue40, dataValues.dias,
-					dataValues.dataGestacionalAtual);
+					dataValues.criterioDataGestacionalAtual);
 			service.calcular(calculoDTO);
 		});
 
@@ -71,7 +71,7 @@ public class CalculoIdadeGestacionalAtual {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.numeroDeSemanasMaiorQue40, dataValues.dias,
-					dataValues.dataGestacionalAtual);
+					dataValues.criterioDataGestacionalAtual);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Número de semanas devem ser menores do que 40!");
@@ -81,7 +81,7 @@ public class CalculoIdadeGestacionalAtual {
 	@Test
 	public void whenDataIsValidCalcularShouldReturnCorrectDataProvavelDoParto() {
 		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.dias,
-				dataValues.dataExameAnterior);
+				dataValues.criterioDataExameAnterior);
 		GestanteDTO dadosGestacionais = service.calcular(calculoDTO);
 
 		Assertions.assertEquals(LocalDate.now().plusDays(280).minusDays(111),

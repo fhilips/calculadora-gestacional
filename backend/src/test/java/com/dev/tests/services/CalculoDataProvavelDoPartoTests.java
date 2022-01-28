@@ -36,7 +36,7 @@ public class CalculoDataProvavelDoPartoTests {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null,
-					dataValues.dataProvavelDoParto);
+					dataValues.criterioDataProvavelDoParto);
 			service.calcular(calculoDTO);
 		});
 	}
@@ -46,7 +46,7 @@ public class CalculoDataProvavelDoPartoTests {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null,
-					dataValues.dataProvavelDoParto);
+					dataValues.criterioDataProvavelDoParto);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser anterior a data atual!");
@@ -58,7 +58,7 @@ public class CalculoDataProvavelDoPartoTests {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null,
-					dataValues.dataProvavelDoParto);
+					dataValues.criterioDataProvavelDoParto);
 			service.calcular(calculoDTO);
 		});
 
@@ -69,7 +69,7 @@ public class CalculoDataProvavelDoPartoTests {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataPosteriorA9Meses, null, null,
-					dataValues.dataProvavelDoParto);
+					dataValues.criterioDataProvavelDoParto);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser posterior a 9 meses da data atual!");
@@ -79,7 +79,7 @@ public class CalculoDataProvavelDoPartoTests {
 	@Test
 	public void whenDataIsValidCalcularShouldReturnIdadeGestacional() {
 		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null,
-				dataValues.dataProvavelDoParto);
+				dataValues.criterioDataProvavelDoParto);
 		GestanteDTO dadosGestacionais = service.calcular(calculoDTO);
 
 		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(279)),

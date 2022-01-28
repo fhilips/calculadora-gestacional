@@ -35,7 +35,7 @@ public class CalculoDataExameAnterior {
 	public void whenDataIsAfterTodayCalcularShouldReturnValidationException() {
 				
 		Assertions.assertThrows(ValidationException.class, () -> {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.dataExameAnterior);
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		});
 	}
@@ -44,7 +44,7 @@ public class CalculoDataExameAnterior {
 	public void whenDataIsAfterTodayCalcularShouldReturnTheCorrectErrorMessage() {
 				
 		try {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.dataExameAnterior);
+			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data deve ser anterior a data atual!");
@@ -56,7 +56,7 @@ public class CalculoDataExameAnterior {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.numeroDediasMaiorQue7,
-					dataValues.dataExameAnterior);
+					dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		});
 
@@ -67,7 +67,7 @@ public class CalculoDataExameAnterior {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.numeroDediasMaiorQue7,
-					dataValues.dataExameAnterior);
+					dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Número de dias devem ser menores do que 7!");
@@ -79,7 +79,7 @@ public class CalculoDataExameAnterior {
 
 		Assertions.assertThrows(ValidationException.class, () -> {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.numeroDeSemanasMaiorQue40, dataValues.dias,
-					dataValues.dataExameAnterior);
+					dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		});
 
@@ -90,7 +90,7 @@ public class CalculoDataExameAnterior {
 
 		try {
 			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.numeroDeSemanasMaiorQue40, dataValues.dias,
-					dataValues.dataExameAnterior);
+					dataValues.criterioDataExameAnterior);
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Número de semanas devem ser menores do que 40!");
@@ -100,7 +100,7 @@ public class CalculoDataExameAnterior {
 	@Test
 	public void whenDataIsValidCalcularShouldReturnIdadeGestacional() {
 		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, dataValues.semanas, dataValues.dias,
-				dataValues.dataExameAnterior);
+				dataValues.criterioDataExameAnterior);
 		GestanteDTO dadosGestacionais = service.calcular(calculoDTO);
 
 		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(111)),

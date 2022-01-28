@@ -17,6 +17,7 @@ import com.dev.services.GestanteService;
 import com.dev.tests.Factory.DataValues;
 import com.dev.web.dto.request.CalculoGestacionalDTO;
 import com.dev.web.dto.request.GestanteDTO;
+import com.fasterxml.jackson.databind.deser.impl.ExternalTypeHandler.Builder;
 
 
 @ExtendWith(SpringExtension.class)
@@ -36,8 +37,12 @@ public class CalculoDataDaUltimaMenstruacaoTests {
 	@Test
 	public void whenDataIsAfterTodayCalcularShouldReturnValidationException() {
 				
-		Assertions.assertThrows(ValidationException.class, () -> {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMaisUmDia, null, null, dataValues.dataUltimaMenstruacao);
+		Assertions.assertThrows(ValidationException.class, () -> {		
+			CalculoGestacionalDTO calculoDTO = CalculoGestacionalDTO
+												.builder()
+												.data(dataValues.dataAtualMaisUmDia)
+												.criterioCalculo(dataValues.criterioDataUltimaMenstruacao)
+												.build();
 			service.calcular(calculoDTO);
 		});
 	}
@@ -45,8 +50,12 @@ public class CalculoDataDaUltimaMenstruacaoTests {
 	@Test
 	public void whenDataIsAfterTodayCalcularShouldReturnTheCorrectErrorMessage() {
 				
-		try {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null, dataValues.dataUltimaMenstruacao);
+		try {		
+			CalculoGestacionalDTO calculoDTO = CalculoGestacionalDTO
+												.builder()
+												.data(dataValues.dataAtualMenosUmDia)
+												.criterioCalculo(dataValues.criterioDataUltimaMenstruacao)
+												.build();
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser anterior a data atual!");
@@ -58,7 +67,11 @@ public class CalculoDataDaUltimaMenstruacaoTests {
 	public void whenDataIsMoreThan9MonthsBeforeTodayCalcularShouldReturnValidationException() {
 				
 		Assertions.assertThrows(ValidationException.class, () -> {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAnteriorA9Meses, null, null, dataValues.dataUltimaMenstruacao);
+			CalculoGestacionalDTO calculoDTO = CalculoGestacionalDTO
+												.builder()
+												.data(dataValues.dataAnteriorA9Meses)
+												.criterioCalculo(dataValues.criterioDataUltimaMenstruacao)
+												.build();
 			service.calcular(calculoDTO);
 		});		
 	
@@ -67,7 +80,11 @@ public class CalculoDataDaUltimaMenstruacaoTests {
 	public void whenDataIsMoreThan9MonthsBeforeTodayCalcularShouldReturnTheCorrectErrorMessage() {
 						
 		try {			
-			CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAnteriorA9Meses, null, null, dataValues.dataUltimaMenstruacao);
+			CalculoGestacionalDTO calculoDTO = CalculoGestacionalDTO
+												.builder()
+												.data(dataValues.dataAnteriorA9Meses)
+												.criterioCalculo(dataValues.criterioDataUltimaMenstruacao)
+												.build();
 			service.calcular(calculoDTO);
 		} catch (Exception e) {
 			assertEquals(e.getMessage(), "Data não pode ser anterior a 9 meses!");
@@ -75,10 +92,15 @@ public class CalculoDataDaUltimaMenstruacaoTests {
 	}
 	
 	@Test
-	public void whenDataIsValidCalcularShouldReturnIdadeGestacional() {
-		CalculoGestacionalDTO calculoDTO = new CalculoGestacionalDTO(dataValues.dataAtualMenosUmDia, null, null, dataValues.dataUltimaMenstruacao);				
+	public void whenDataIsValidCalcularShouldReturnIdadeGestacional() {	
+		CalculoGestacionalDTO calculoDTO = CalculoGestacionalDTO
+											.builder()
+											.data(dataValues.dataAtualMenosUmDia)
+											.criterioCalculo(dataValues.criterioDataUltimaMenstruacao)
+											.build();
 		GestanteDTO dadosGestacionais = service.calcular(calculoDTO);
-		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(1)), dadosGestacionais.getIdadeGestacional());
+		Assertions.assertEquals(DataValues.formatarIdadeGestacional(LocalDate.now().minusDays(1)),
+								dadosGestacionais.getIdadeGestacional());
 	}	
 	
 }
